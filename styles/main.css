@@ -1,0 +1,139 @@
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #343a40;
+    padding-top: 20px;
+}
+
+.sidebar a {
+    padding: 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: #007bff;
+}
+
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+.library-img {
+    max-height: 400px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.library-img:hover {
+    transform: scale(1.02);
+}
+
+.news-item {
+    transition: box-shadow 0.3s;
+}
+
+.news-item:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.news-date {
+    float: right;
+    color: #6c757d;
+}
+
+.news-image {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.book-cover-image {
+    width: 140px;
+    height: 200px;
+    margin: 20px auto; /* Auto left & right margins center it */
+    border-radius: 8px;
+    display: block; /* Ensures it behaves like a block element */
+}
+
+/* Mobile Styles */
+@media (max-width: 767px) {
+    .sidebar {
+        left: -250px;
+        transition: 0.3s;
+        z-index: 1000;
+    }
+    
+    .sidebar.active {
+        left: 0;
+    }
+    
+    .main-content {
+        margin-left: 0;
+    }
+    
+    .mobile-menu-btn {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 1001;
+        padding: 10px 15px;
+    }
+}
+
+/* News Detail Styles */
+.news-detail {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.news-meta {
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+.page {
+    display: none;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.news-card {
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+}
+
+.library-img {
+    max-width: 340px;
+    max-height: 200px;
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    object-fit: contain;
+}
+
+
+/*.library-img {
+    max-height: 400px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}*/
