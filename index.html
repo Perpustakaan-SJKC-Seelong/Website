@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
+    <img src="images/seelong_door.jpg" id="backgroundImg">
+
     <button class="mobile-menu-btn d-md-none" onclick="toggleSidebar()">
         <i class="fas fa-bars"></i>
     </button>
@@ -25,12 +27,18 @@
     <div class="main-content">
         <h1>Welcome to SJKC Seelong Library</h1>
         <div class="row">
-            <div class="col-md-6">
-                <img src="images/seelong_door.jpg" class="library-img w-100" alt="SJKC Door Image">
+            <div class="col-md-6 logo-section">
+                <img src="images/seelong_logo.jpg" class="library-img w-100" alt="Seelong Logo">
             </div>
-            <div class="col-md-6">
-                <img src="images/seelong_logo.jpg" class="library-img w-100" alt="Library Image">
-            </div>
+        </div>
+
+        <div class="video-container">
+            <iframe 
+                src="https://www.youtube.com/embed/lfaFSpjyKcA" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
         </div>
         
         <div class="contact-section mt-5">
