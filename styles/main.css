@@ -174,3 +174,9 @@
     display: block;
 }
 
+.book-shelf {
+    margin-left: 250px;
+    /*padding: 20px;*/
+    height: 750px;  /* Set the visible height */
+    overflow: hidden; /* Hide the overflowed 200px */
+}
