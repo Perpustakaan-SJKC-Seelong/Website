@@ -89,6 +89,10 @@
         z-index: 1001;
         padding: 10px 15px;
     }
+
+    .book-shelf{
+        margin-left: 0;
+    }
 }
 
 /* News Detail Styles */
@@ -176,7 +180,6 @@
 
 .book-shelf {
     margin-left: 250px;
-    /*padding: 20px;*/
     height: 750px;  /* Set the visible height */
     overflow: hidden; /* Hide the overflowed 200px */
 }
