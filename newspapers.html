@@ -4,10 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
     <title>Newspapers - SJKC Seelong Library</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-scholar.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
 </head>
 
 <body>
@@ -29,16 +36,230 @@
     </div>
 
     <div class="main-content">
-        <h1>Malaysian Newspaper Links</h1>
-        <div class="list-group">
-            <a href="https://www.thestar.com.my" class="list-group-item list-group-item-action" target="_blank">The Star</a>
-            <a href="https://www.sinchew.com.my" class="list-group-item list-group-item-action" target="_blank">Sin Chew Daily</a>
-            <a href="https://www.nst.com.my" class="list-group-item list-group-item-action" target="_blank">New Straits Times</a>
-            <a href="https://www.utusan.com.my" class="list-group-item list-group-item-action" target="_blank">Utusan Malaysia</a>
-        </div>
+          
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-12 text-center">
+                  <div class="section-heading">
+                    <h2>Malaysian Newspaper</h2>
+                  </div>
+                </div>
+              </div>
+              <ul class="event_filter">
+                <li>
+                  <a class="is_active" href="#!" data-filter="*">Show All</a>
+                </li>
+                <li>
+                  <a href="#!" data-filter=".bm">Bahasa Malaysia</a>
+                </li>
+                <li>
+                  <a href="#!" data-filter=".bc">华文</a>
+                </li>
+                <li>
+                  <a href="#!" data-filter=".bi">English</a>
+                </li>
+              </ul>
+              <div class="row event_box">
+
+                <!-- Chinese Newspaper -->
+
+                <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6 bc">
+                  <div class="events_item">
+                    <div class="thumb">
+                      <a href="https://www.sinchew.com.my" target="_blank"><img src="assets/images/sinchew.png" alt="星洲日报" style="max-height: 270px;"></a>
+                      <span class="category">华文</span>
+                    </div>
+                    <div class="down-content">
+                      <h4><a href="https://www.sinchew.com.my" class="list-group-item list-group-item-action" target="_blank">星洲日报</a><h4>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6 bc">
+                  <div class="events_item">
+                    <div class="thumb">
+                      <a href="https://www.chinapress.com.my/" target="_blank"><img src="assets/images/china_press.jpg" alt="中國報" style="max-height: 270px;"></a>
+                      <span class="category">华文</span>
+                    </div>
+                    <div class="down-content">
+                      <h4><a href="https://www.chinapress.com.my/" class="list-group-item list-group-item-action" target="_blank">中國報</a><h4>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6 bc">
+                  <div class="events_item">
+                    <div class="thumb">
+                      <a href="https://www.enanyang.my/" target="_blank"><img src="assets/images/nanyang.png" alt="南洋商报" style="max-height: 270px;"></a>
+                      <span class="category">华文</span>
+                    </div>
+                    <div class="down-content">
+                      <h4><a href="https://www.enanyang.my/" class="list-group-item list-group-item-action" target="_blank">南洋商报</a><h4>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6 bc">
+                  <div class="events_item">
+                    <div class="thumb">
+                      <a href="https://www.orientaldaily.com.my/" target="_blank"><img src="assets/images/oriental.png" alt="东方日报" style="max-height: 270px;"></a>
+                      <span class="category">华文</span>
+                    </div>
+                    <div class="down-content">
+                      <h4><a href="https://www.orientaldaily.com.my/" class="list-group-item list-group-item-action" target="_blank">东方日报</a><h4>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6 bc">
+                  <div class="events_item">
+                    <div class="thumb">
+                      <a href="https://www.kwongwah.com.my/" target="_blank"><img src="assets/images/kwongwah.jpg" alt="光华日报" style="max-height: 270px;"></a>
+                      <span class="category">华文</span>
+                    </div>
+                    <div class="down-content">
+                      <h4><a href="https://www.kwongwah.com.my/" class="list-group-item list-group-item-action" target="_blank">光华日报</a><h4>
+                    </div>
+                  </div>
+                </div>
+
+
+                <!-- English Newspaper -->
+
+                <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6 bi">
+                  <div class="events_item">
+                    <div class="thumb">
+                      <a href="https://www.thestar.com.my/" target="_blank"><img src="assets/images/the_star.png" alt="The Star" style="max-height: 270px;"></a>
+                      <span class="category">English</span>
+                    </div>
+                    <div class="down-content">
+                      <h4><a href="https://www.thestar.com.my/" class="list-group-item list-group-item-action" target="_blank">The Star</a><h4>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6 bi">
+                  <div class="events_item">
+                    <div class="thumb">
+                      <a href="https://www.nst.com.my/" target="_blank"><img src="assets/images/nst.png" alt="New Straits Times" style="max-height: 270px;"></a>
+                      <span class="category">English</span>
+                    </div>
+                    <div class="down-content">
+                      <h4><a href="https://www.nst.com.my/" class="list-group-item list-group-item-action" target="_blank">New Straits Times</a><h4>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6 bi">
+                  <div class="events_item">
+                    <div class="thumb">
+                      <a href="https://www.malaymail.com/" target="_blank"><img src="assets/images/malaymail.jpeg" alt="Malay Mail" style="max-height: 270px;"></a>
+                      <span class="category">English</span>
+                    </div>
+                    <div class="down-content">
+                      <h4><a href="https://www.malaymail.com/" class="list-group-item list-group-item-action" target="_blank">Malay Mail</a><h4>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6 bi">
+                  <div class="events_item">
+                    <div class="thumb">
+                      <a href="https://www.thesundaily.my/" target="_blank"><img src="assets/images/the_sun.png" alt="The Sun Daily" style="max-height: 270px;"></a>
+                      <span class="category">English</span>
+                    </div>
+                    <div class="down-content">
+                      <h4><a href="https://www.thesundaily.my/" class="list-group-item list-group-item-action" target="_blank">The Sun Daily</a><h4>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6 bi">
+                  <div class="events_item">
+                    <div class="thumb">
+                      <a href="https://www.freemalaysiatoday.com/" target="_blank"><img src="assets/images/fmt.jpg" alt="Free Malaysia Today" style="max-height: 270px;"></a>
+                      <span class="category">English</span>
+                    </div>
+                    <div class="down-content">
+                      <h4><a href="https://www.freemalaysiatoday.com/" class="list-group-item list-group-item-action" target="_blank">Free Malaysia Today</a><h4>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Malay Newspaper -->
+
+                <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6 bm">
+                  <div class="events_item">
+                    <div class="thumb">
+                      <a href="https://www.bharian.com.my/" target="_blank"><img src="assets/images/bh.avif" alt="Berita Harian" style="max-height: 270px;"></a>
+                      <span class="category">Bahasa Malaysia</span>
+                    </div>
+                    <div class="down-content">
+                      <h4><a href="https://www.bharian.com.my/" class="list-group-item list-group-item-action" target="_blank">Berita Harian</a><h4>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6 bm">
+                  <div class="events_item">
+                    <div class="thumb">
+                      <a href="https://www.hmetro.com.my/" target="_blank"><img src="assets/images/metro.avif" alt="Harian Metro" style="max-height: 270px;"></a>
+                      <span class="category">Bahasa Malaysia</span>
+                    </div>
+                    <div class="down-content">
+                      <h4><a href="https://www.hmetro.com.my//" class="list-group-item list-group-item-action" target="_blank">Harian Metro</a><h4>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6 bm">
+                  <div class="events_item">
+                    <div class="thumb">
+                      <a href="https://www.utusan.com.my/" target="_blank"><img src="assets/images/utusan.jpg" alt="Utusan Malaysia" style="max-height: 270px;"></a>
+                      <span class="category">Bahasa Malaysia</span>
+                    </div>
+                    <div class="down-content">
+                      <h4><a href="https://www.utusan.com.my/" class="list-group-item list-group-item-action" target="_blank">Utusan Malaysia</a><h4>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6 bm">
+                  <div class="events_item">
+                    <div class="thumb">
+                      <a href="https://www.sinarharian.com.my/" target="_blank"><img src="assets/images/sinar_harian.jpeg" alt="Sinar Harian" style="max-height: 270px;"></a>
+                      <span class="category">Bahasa Malaysia</span>
+                    </div>
+                    <div class="down-content">
+                      <h4><a href="https://www.sinarharian.com.my/" class="list-group-item list-group-item-action" target="_blank">Sinar Harian</a><h4>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6 bm">
+                  <div class="events_item">
+                    <div class="thumb">
+                      <a href="https://www.kosmo.com.my/" target="_blank"><img src="assets/images/kosmo.jpg" alt="Kosmo!" style="max-height: 270px;"></a>
+                      <span class="category">Bahasa Malaysia</span>
+                    </div>
+                    <div class="down-content">
+                      <h4><a href="https://www.kosmo.com.my/" class="list-group-item list-group-item-action" target="_blank">Kosmo!</a><h4>
+                    </div>
+                  </div>
+                </div>
+            
+              </div>
+            </div>
+         
     </div>
 
     
     <script src="scripts/main.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+   <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+   <script src="assets/js/isotope.min.js"></script>
+   <script src="assets/js/owl-carousel.js"></script>
+   <script src="assets/js/counter.js"></script>
+   <script src="assets/js/custom.js"></script>
 </body>
 </html>
