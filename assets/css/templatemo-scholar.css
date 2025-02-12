@@ -810,11 +810,11 @@ Services Style
 }
 
 .services .service-item .icon {
-  width: 190px;
-  height: 190px;
+  width: 150px;
+  height: 150px;
   display: inline-block;
   text-align: center;
-  line-height: 190px;
+  line-height: 150px;
   background-color: #7a6ad8;
   border-radius: 50%;
   position: absolute;
@@ -829,11 +829,12 @@ Services Style
 
 .services .service-item .main-content {
   border-radius: 25px;
-  padding: 80px 30px 50px 30px;
+  padding: 60px 30px 50px 30px;
   background-color: #f1f0fe;
   margin-bottom: 30px;
-  margin-right: 80px;
+  margin-right: 50px;
   transition: all .4s;
+  min-height: 416px;
 }
 
 .services .service-item h4 {
