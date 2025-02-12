@@ -1157,7 +1157,8 @@ Team Style
 }
 
 .team-member img {
-  max-width: 220px;
+  max-width: 190px;
+  max-height: 200px;
   border-radius: 50%;
   position: absolute;
   top: -110px;
@@ -1168,18 +1169,18 @@ Team Style
 
 .team-member .main-content {
   border-radius: 25px;
-  padding: 140px 30px 40px 30px;
+  padding: 110px 30px 20px 30px;
   background-color: #f1f0fe;
   text-align: center;
 }
 
 .team-member .main-content span.category {
   color: #7a6ad8;
-  font-size: 15px;
+  font-size: 17px;
 }
 
 .team-member .main-content h4 {
-  font-size: 22px;
+  font-size: 25px;
   font-weight: 600;
   margin-top: 8px;
   margin-bottom: 15px;
