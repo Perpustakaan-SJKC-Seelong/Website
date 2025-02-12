@@ -1646,7 +1646,7 @@ Footer Style
 --------------------------------------------- 
 */
 
-footer {
+/*footer {
   margin-top: 150px;
   position: relative;
   background-color: #7a6ad8;
@@ -1684,7 +1684,7 @@ footer::before {
   height: 119px;
   content: '';
   z-index: 2;
-}
+}*/
 
 /* 
 ---------------------------------------------
