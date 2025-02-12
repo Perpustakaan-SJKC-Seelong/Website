@@ -58,12 +58,19 @@
     border-radius: 8px;
 }
 
+
 .book-cover-image {
     width: 140px;
     height: 200px;
     margin: 20px auto; /* Auto left & right margins center it */
     border-radius: 8px;
     display: block; /* Ensures it behaves like a block element */
+}
+
+.book-shelf {
+    margin-left: 250px;
+    height: 750px;  /* Set the visible height */
+    overflow: hidden; /* Hide the overflowed 200px */
 }
 
 /* Mobile Styles */
@@ -91,7 +98,7 @@
     }
 
     .book-shelf{
-        margin-left: 0;
+        margin-left: 0px;
     }
 }
 
@@ -176,10 +183,4 @@
     max-width: 100%; /* Prevents overflow */
     height: auto; /* Maintains aspect ratio */
     display: block;
-}
-
-.book-shelf {
-    margin-left: 250px;
-    height: 750px;  /* Set the visible height */
-    overflow: hidden; /* Hide the overflowed 200px */
 }
