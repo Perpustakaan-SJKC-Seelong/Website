@@ -305,7 +305,7 @@ Header Style
   top: 40px;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 10000;
   -webkit-transition: all .5s ease 0s;
   -moz-transition: all .5s ease 0s;
   -o-transition: all .5s ease 0s;
@@ -326,18 +326,19 @@ Header Style
 }
 
 .header-area .main-nav .logo h1 {
-  font-size: 36px;
+  font-size: 26px;
   text-transform: uppercase;
   color: #fff;
   font-weight: 600;
   margin-right: 20px;
   padding-right: 20px;
   border-right: 1px solid rgba(250, 250, 250, 0.3);
+  width: 330px;
 }
 
 .background-header .main-nav .logo,
 .background-header .main-nav #search {
-  margin-top: 18px;
+  margin-top: 23px;
 }
 
 .header-area .main-nav #search {
@@ -1723,7 +1724,8 @@ body {
     display: none;
   }
   .header-area .main-nav .logo h1 {
-    font-size: 34px;
+    font-size: 26px;
+    text-align: left;
   }
   .header-area .main-nav .logo {
     border-right: none;

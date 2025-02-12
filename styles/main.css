@@ -22,7 +22,7 @@
 }
 
 .page-content {
-    margin-left: 250px;
+    margin-top: 80px;
     padding: 20px;
 }
 
@@ -68,7 +68,7 @@
 }
 
 .book-shelf {
-    margin-left: 250px;
+    margin-top: 80px;
     height: 750px;  /* Set the visible height */
     overflow: hidden; /* Hide the overflowed 200px */
 }
@@ -83,10 +83,6 @@
     
     .sidebar.active {
         left: 0;
-    }
-    
-    .page-content {
-        margin-left: 0;
     }
     
     .mobile-menu-btn {
