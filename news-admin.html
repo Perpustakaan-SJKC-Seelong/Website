@@ -10,7 +10,7 @@
         <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
         <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
         <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-storage-compat.js"></script>
-        
+
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <link rel="stylesheet" href="styles/main.css">
@@ -71,6 +71,9 @@
         </header>
 
         <div class="page-content">
+            <p>Format for the contents : &lt;h6&gt;Contents&lt;/h6&gt;</p>
+            <p>Format for skip a line : &lt;br/&gt;</p>
+            <p>Format for adding images in content : &lt;img src="images/school_news/xx.jpg" class="news-image" alt="Description of image"&gt;</p>
             <div class="col-lg-5 col-12 mx-auto">
                     <form class="custom-form membership-form shadow-lg" role="form">
                         <h4 class="text-white mb-4">Upload News</h4>
@@ -91,6 +94,12 @@
                                 <input type="text" name="category" id="category" class="form-control" placeholder="Category" required="">
                                         
                                 <label for="floatingInput">Category</label>
+                            </div>
+
+                            <div class="form-floating">
+                                <input type="text" name="cover_img" id="cover_img" class="form-control" placeholder="Cover Image" required="">
+                                        
+                                <label for="floatingInput">Cover Image Name</label>
                             </div>
 
                             <div class="form-floating">
@@ -128,9 +137,10 @@
                 let title = document.getElementById("title").value;
                 let date = document.getElementById("date").value;
                 let category = document.getElementById("category").value;
-                let content = document.getElementById("content").value.split("\n").map(line => `<h6>${line}</h6>`).join("");
+                let imageInput = document.getElementById("cover_img").value;
+                let content = document.getElementById("content").value;
 
-                if (!title || !date || !category || !content) {
+                if (!title || !date || !category || !imageInput || !content) {
                     alert("Please fill all fields.");
                     return;
                 }
@@ -141,6 +151,7 @@
                     id: newNewsRef.key,
                     title: title,
                     date: date,
+                    image: "images/school_news/"+imageInput, 
                     category: category,
                     content: content
                 })
@@ -150,12 +161,14 @@
                     document.getElementById("title").value = "";
                     document.getElementById("date").value = "";
                     document.getElementById("category").value = "";
+                    document.getElementById("cover_img").value = "";
                     document.getElementById("content").value = "";
                 })
                 .catch(error => {
                     document.getElementById("status").innerText = "Error uploading news: " + error.message;
                 });
             }
+
         </script>
 
         <script src="vendor/jquery/jquery.min.js"></script>
