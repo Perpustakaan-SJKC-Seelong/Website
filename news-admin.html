@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Upload News</title>
+
+    <!-- Use Firebase v8 compatibility mode -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-storage-compat.js"></script>
+</head>
+<body>
+
+    <h2>Upload News</h2>
+
+    <label>Title:</label>
+    <input type="text" id="title" required><br>
+
+    <label>Date:</label>
+    <input type="date" id="date" required><br>
+
+    <label>Category:</label>
+    <input type="text" id="category" required><br>
+
+    <label>Content:</label>
+    <textarea id="content" rows="5"></textarea><br>
+
+    <button onclick="uploadNews()">Upload News</button>
+
+    <p id="status"></p>
+
+    <script>
+        // Firebase Config
+        const firebaseConfig = {
+            apiKey: "AIzaSyBUSRk2UpuAYCryCv86auFk4QtVww059UI",
+            authDomain: "pusat-sumber-sjkc-seelong.firebaseapp.com",
+            databaseURL: "https://pusat-sumber-sjkc-seelong-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "pusat-sumber-sjkc-seelong",
+            storageBucket: "pusat-sumber-sjkc-seelong.firebasestorage.app",
+            messagingSenderId: "688683704120",
+            appId: "1:688683704120:web:ff11c857a1909d888febcd"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+        const storage = firebase.storage();
+
+        function uploadNews() {
+            let title = document.getElementById("title").value;
+            let date = document.getElementById("date").value;
+            let category = document.getElementById("category").value;
+            let content = document.getElementById("content").value.split("\n").map(line => `<h6>${line}</h6>`).join("");
+
+            if (!title || !date || !category || !content) {
+                alert("Please fill all fields.");
+                return;
+            }
+
+            // Save news details in Firebase Database
+            let newNewsRef = db.ref("news").push();
+            newNewsRef.set({
+                id: newNewsRef.key,
+                title: title,
+                date: date,
+                category: category,
+                content: content
+            })
+            .then(() => {
+                document.getElementById("status").innerText = "News uploaded successfully!";
+                // Clear input fields after successful upload
+                document.getElementById("title").value = "";
+                document.getElementById("date").value = "";
+                document.getElementById("category").value = "";
+                document.getElementById("content").value = "";
+            })
+            .catch(error => {
+                document.getElementById("status").innerText = "Error uploading news: " + error.message;
+            });
+        }
+    </script>
+
+</body>
+</html>
