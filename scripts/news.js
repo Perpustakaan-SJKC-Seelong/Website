@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// 🔹 Fetch all news from Firebase
+
 async function initializeNewsPage() {
     const newsContainer = document.querySelector('.news-list');
     newsContainer.innerHTML = '';
@@ -42,9 +42,16 @@ async function initializeNewsPage() {
     db.ref("news").once("value", snapshot => {
         const newsData = snapshot.val();
         if (newsData) {
-            Object.keys(newsData).forEach(newsId => {
-                const news = newsData[newsId];
+            // Convert object to array and sort by date (descending order)
+            const sortedNews = Object.keys(newsData)
+                .map(newsId => ({
+                    id: newsId, 
+                    ...newsData[newsId]
+                }))
+                .sort((a, b) => new Date(b.date) - new Date(a.date)); // Sort by date (latest first)
 
+            // Append sorted news to the container
+            sortedNews.forEach(news => {
                 const newsItem = document.createElement('div');
                 newsItem.className = 'news-item mb-3';
                 newsItem.innerHTML = `
@@ -74,6 +81,7 @@ async function initializeNewsPage() {
         }
     });
 }
+
 
 // 🔹 Fetch a single news item based on ID
 async function initializeNewsDetailPage() {
