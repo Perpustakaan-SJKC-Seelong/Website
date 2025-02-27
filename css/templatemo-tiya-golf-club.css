@@ -407,12 +407,16 @@ strong {
   NAVIGATION BAR & OFFCANVAS              
 -----------------------------------------*/
 .offcanvas {
-  background-color: var(--primary-color);
+  background-color: #7a6ad8;
   padding: 30px;
 }
 
 .offcanvas.offcanvas-end {
   border-left: 0;
+}
+
+.offcanvas-title{
+  color : var(--link-hover-color);
 }
 
 .offcanvas-header .btn-close {
@@ -438,11 +442,11 @@ strong {
 }
 
 .sticky-wrapper.is-sticky .navbar {
-  background-color: rgb(61 64 91);
+  background-color: #7a6ad8;
 }
 
 .navbar {
-  background: transparent;
+  background-color: #7a6ad8;
   z-index: 99;
   padding-top: 15px;
   padding-bottom: 15px;
@@ -472,10 +476,18 @@ strong {
 }
 
 .navbar-brand-text {
-  line-height: normal;
+/*  line-height: normal;
   margin-left: 10px;
   position: relative;
-  bottom: 5px;
+  bottom: 5px;*/
+  font-size: 26px;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 600;
+  margin-right: 20px;
+  padding-right: 20px;
+  border-right: 1px solid rgba(250, 250, 250, 0.3);
+  width: 330px;
 }
 
 .navbar-brand-text small {
@@ -737,7 +749,7 @@ strong {
   padding-left: 0;
 }
 
-.section-bg-image-block button[type="submit"] {
+.section-bg-image-block button[type="button"] {
   background-color: var(--primary-color);
   border: 0;
   border-radius: var(--border-radius-large) !important;
@@ -978,7 +990,7 @@ strong {
 }
 
 .membership-form {
-  background-color: var(--secondary-color);
+  background-color: #7a6ad8;
   border-radius: var(--border-radius-medium);
   padding: 35px;
 }
@@ -1091,7 +1103,7 @@ strong {
   padding-left: 20px;
 }
 
-.custom-form button[type="submit"] {
+.custom-form button[type="button"] {
   background: var(--custom-btn-bg-color);
   border: none;
   border-radius: var(--border-radius-large);
@@ -1103,8 +1115,8 @@ strong {
   padding-left: 10px;
 }
 
-.custom-form button[type="submit"]:hover,
-.custom-form button[type="submit"]:focus {
+.custom-form button[type="button"]:hover,
+.custom-form button[type="button"]:focus {
   background: var(--custom-btn-bg-hover-color);
   border-color: transparent;
 }

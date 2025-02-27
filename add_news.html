@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>News Admin - SJKC Seelong Library</title>
+
+        <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-storage-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+
+        <!-- CSS FILES -->  
+        <link rel="stylesheet" href="styles/main.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="css/bootstrap-icons.css" rel="stylesheet">
+
+        <link href="css/templatemo-tiya-golf-club.css" rel="stylesheet">
+        
+    </head>
+    
+    <body>
+
+        <main>
+
+            <nav class="navbar navbar-expand-lg">                
+                <div class="container">
+                    <a class="navbar-brand d-flex align-items-center" href="index.html">
+                        <h3 class="navbar-brand-text">SJKC Seelong Library</h3>
+                    </a>
+    
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-lg-auto">
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="add_news.html">Add News</a>
+                            </li>
+    
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="edit_news.html">Edit News</a>
+                            </li>
+
+                        </ul>
+
+                        <div class="d-none d-lg-block ms-lg-3">
+                            <a class="btn custom-btn custom-border-btn" id="admin-login-btn" data-bs-toggle="offcanvas" href="#offcanvasLogin" role="button" aria-controls="offcanvasLogin">Admin Login</a>
+
+                            <a class="btn custom-btn custom-border-btn" id="logout-btn" role="button" onclick="logout()" style="display: none;">Log Out</a>
+                        </div>
+
+                        <!-- <button class="btn btn-danger" id="logout-btn" onclick="logout()" style="display: none;">Logout</button> -->
+
+                    </div>
+                </div>
+            </nav>
+
+            <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasLogin" aria-labelledby="offcanvasLoginLabel">                
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasLoginLabel">Admin Login</h5>
+                    
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                
+                <div class="offcanvas-body d-flex flex-column">
+                    <form class="custom-form member-login-form" action="#" method="post" role="form">
+
+                        <div class="member-login-form-body">
+                            <div class="mb-4">
+                                <label class="form-label mb-2 text-white" for="member-login-number">Email</label>
+
+                                <input type="email" name="member-login-number" id="member-login-number" class="form-control" placeholder="xxx@gmail.com" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label mb-2 text-white" for="member-login-password">Password</label>
+
+                                <input type="password" name="member-login-password" id="member-login-password" pattern="[0-9a-zA-Z]{4,10}" class="form-control" placeholder="Password" required="">
+                            </div>
+
+
+                            <div class="col-lg-5 col-md-7 col-8 mx-auto">
+                                <button type="button" class="form-control" onclick="login()">Login</button>
+                            </div>
+
+                            <br/>
+
+                            <p id="login-status" class="text-white"></p>
+
+                        </div>
+                    </form>
+
+                    <div class="mt-auto mb-5">
+                        <p>
+                            <strong class="text-white me-3">Any Questions?</strong>
+
+                            <a href="tel: 016-564-3599" class="contact-link">
+                            	Miss Ong : 016-564-3599
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#f1f0fe" fill-opacity="1" d="M0,224L34.3,192C68.6,160,137,96,206,90.7C274.3,85,343,139,411,144C480,149,549,107,617,122.7C685.7,139,754,213,823,240C891.4,267,960,245,1029,224C1097.1,203,1166,181,1234,160C1302.9,139,1371,117,1406,106.7L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path></svg>
+            </div>
+
+
+            <div class="page-content">
+                <p>Format for the contents : &lt;h6&gt;Contents&lt;/h6&gt;</p>
+                <p>Format for skip a line : &lt;br/&gt;</p>
+                <p>Format for adding images in content : &lt;img src="images/school_news/xx.jpg" class="news-image" alt="Description of image"&gt;</p>
+                <div class="col-lg-5 col-12 mx-auto">
+                        <form class="custom-form membership-form shadow-lg" role="form">
+                            <h4 class="text-white mb-4">Upload News</h4>
+
+                                <div class="form-floating">
+                                    <input type="text" name="title" id="title" class="form-control" placeholder="Title" required="">
+                                            
+                                    <label for="floatingInput">Title</label>
+                                </div>
+
+                                <div class="form-floating">
+                                    <input type="date" name="date" id="date" class="form-control" placeholder="Date" required="">
+                                            
+                                    <label for="floatingInput">Date</label>
+                                </div>
+
+                                <div class="form-floating">
+                                    <input type="text" name="category" id="category" class="form-control" placeholder="Category" required="">
+                                            
+                                    <label for="floatingInput">Category</label>
+                                </div>
+
+                                <div class="form-floating">
+                                    <input type="text" name="cover_img" id="cover_img" class="form-control" placeholder="Cover Image" required="">
+                                            
+                                    <label for="floatingInput">Cover Image Name</label>
+                                </div>
+
+                                <div class="form-floating">
+                                    <textarea class="form-control" id="content" name="content" placeholder="Content"></textarea>
+                                            
+                                    <label for="floatingTextarea"> Content</label>
+                                </div>
+
+                                <button type="button" class="form-control" onclick="uploadNews()">Upload News</button>
+
+                                <br/>
+                                <p id="status" class="text-white"></p>
+                            </div>
+                        </form>
+                </div>
+            </div>
+            
+        </main>
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="scripts/login.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/jquery.sticky.js"></script>
+        <script src="js/animated-headline.js"></script>
+        <script src="js/modernizr.js"></script>
+        <script src="js/custom.js"></script>
+
+    </body>
+</html>
