@@ -113,5 +113,6 @@ function uploadNews() {
 }
 
 
-// Check login status on page load
-document.addEventListener("DOMContentLoaded", checkLoginStatus);
+document.addEventListener("DOMContentLoaded", function () {
+    checkLoginStatus();
+});
