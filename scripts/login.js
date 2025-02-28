@@ -23,18 +23,132 @@ firebase.auth().onAuthStateChanged((user) => {
     }
 });
 
+
+document.addEventListener('DOMContentLoaded', function() {
+    const currentPage = window.location.pathname.split('/').pop();
+    
+    if (currentPage === 'edit_news.html') {
+        initializeNewsPage();
+    } else if (currentPage === 'edit_news_detail.html') {
+        initializeNewsDetailPage();
+    }
+});
+
+async function initializeNewsPage() {
+    const newsContainer = document.querySelector('.news-list');
+    newsContainer.innerHTML = '';
+
+    db.ref("news").once("value", snapshot => {
+        const newsData = snapshot.val();
+        if (newsData) {
+            // Convert object to array and sort by date (descending order)
+            const sortedNews = Object.keys(newsData)
+                .map(newsId => ({
+                    id: newsId, 
+                    ...newsData[newsId]
+                }))
+                .sort((a, b) => new Date(b.date) - new Date(a.date)); // Sort by date (latest first)
+
+            // Append sorted news to the container
+            sortedNews.forEach(news => {
+                const newsItem = document.createElement('div');
+                newsItem.className = 'news-item mb-3';
+                newsItem.innerHTML = `
+                    <div class="col-lg-12 col-md-6">
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="image">
+                                        <img src="${news.image}" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-9">
+                                    <ul>
+                                        <li><span class="category">${news.category}</span>
+                                            <h4>${news.title}</h4></li>
+                                        <li><span>Date:</span>
+                                            <h6>${news.date}</h6></li>
+                                    </ul>
+                                    <a href="edit_news_detail.html?id=${news.id}" onclick="return checkAccessEditNewsDetail();">
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                newsContainer.appendChild(newsItem);
+            });
+        }
+    });
+}
+
+function checkAccessEditNewsDetail(event) {
+    event.preventDefault(); // Stop the link from navigating immediately
+
+    firebase.auth().onAuthStateChanged((user) => {
+        if (!user) {
+            alert("You must be logged in to edit news.");
+            let offcanvas = new bootstrap.Offcanvas(document.getElementById('offcanvasExample'));
+            offcanvas.show();
+        } else {
+            // If user is authenticated, manually navigate to the page
+            window.location.href = event.target.closest('a').href;
+        }
+    });
+}
+
+async function initializeNewsDetailPage() {
+    firebase.auth().onAuthStateChanged((user) => {
+        if (!user) {
+            alert("You must be logged in to view this page.");
+            window.location.href = "edit_news.html"; // Redirect to the news list page instead
+            return;
+        }
+
+        const newsContainer = document.querySelector('.news-detail');
+        newsContainer.innerHTML = '';
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const newsId = urlParams.get('id');
+
+        db.ref("news/" + newsId).once("value", snapshot => {
+            const news = snapshot.val();
+
+            if (news) {
+                const newsItem = document.createElement('div');
+                newsItem.className = 'news-details-content';
+                newsItem.innerHTML = `
+                    <h1>${news.title}</h1>
+                    <p class="news-meta">Published on <span>${news.date}</span></p>
+                    <div>
+                        <p>${news.content}</p>
+                    </div>
+                `;
+                newsContainer.appendChild(newsItem);
+            } else {
+                alert("News not found.");
+                window.location.href = "edit_news.html"; // Redirect if the news item is missing
+            }
+        });
+    });
+}
+
 function checkLoginStatus() {
     const isLoggedIn = localStorage.getItem("isLoggedIn");
 
+    // Select all login and logout buttons
+    const loginButtons = document.querySelectorAll(".admin-login-btn");
+    const logoutButtons = document.querySelectorAll(".logout-btn");
+
     if (isLoggedIn === "true") {
-        document.getElementById("admin-login-btn").style.display = "none"; // Hide login button
-        document.getElementById("logout-btn").style.display = "block"; // Show logout button
+        loginButtons.forEach(btn => btn.style.display = "none"); // Hide all login buttons
+        logoutButtons.forEach(btn => btn.style.display = "block"); // Show all logout buttons
     } else {
-        document.getElementById("admin-login-btn").style.display = "block"; // Show login button
-        document.getElementById("logout-btn").style.display = "none"; // Hide logout button
+        loginButtons.forEach(btn => btn.style.display = "block"); // Show all login buttons
+        logoutButtons.forEach(btn => btn.style.display = "none"); // Hide all logout buttons
     }
 }
-
 
 // Login function
 function login() {

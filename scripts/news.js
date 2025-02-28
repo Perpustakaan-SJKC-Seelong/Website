@@ -16,17 +16,9 @@ const db = firebase.database();
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
 const tooltips = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 
-// Sidebar activation
 document.addEventListener('DOMContentLoaded', function() {
     const currentPage = window.location.pathname.split('/').pop();
     
-    document.querySelectorAll('.sidebar a').forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === currentPage) {
-            link.classList.add('active');
-        }
-    });
-
     if (currentPage === 'news.html') {
         initializeNewsPage();
     } else if (currentPage === 'news-detail.html') {
