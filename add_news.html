@@ -128,48 +128,48 @@
                 <p>Format for the contents : &lt;h6&gt;Contents&lt;/h6&gt;</p>
                 <p>Format for skip a line : &lt;br/&gt;</p>
                 <p>Format for adding images in content : &lt;img src="images/school_news/xx.jpg" class="news-image" alt="Description of image"&gt;</p>
+                
                 <div class="col-lg-5 col-12 mx-auto">
-                        <form class="custom-form membership-form shadow-lg" role="form">
-                            <h4 class="text-white mb-4">Upload News</h4>
+                    <form class="custom-form membership-form shadow-lg" role="form">
+                        <h4 class="text-white mb-4" id="form-title">Upload News</h4>
 
-                                <div class="form-floating">
-                                    <input type="text" name="title" id="title" class="form-control" placeholder="Title" required="">
-                                            
-                                    <label for="floatingInput">Title</label>
-                                </div>
+                        <input type="hidden" id="news_id"> <!-- Hidden field to store the News ID -->
 
-                                <div class="form-floating">
-                                    <input type="date" name="date" id="date" class="form-control" placeholder="Date" required="">
-                                            
-                                    <label for="floatingInput">Date</label>
-                                </div>
+                        <div class="form-floating">
+                            <input type="text" name="title" id="title" class="form-control" placeholder="Title" required>
+                            <label for="floatingInput">Title</label>
+                        </div>
 
-                                <div class="form-floating">
-                                    <input type="text" name="category" id="category" class="form-control" placeholder="Category" required="">
-                                            
-                                    <label for="floatingInput">Category</label>
-                                </div>
+                        <div class="form-floating">
+                            <input type="date" name="date" id="date" class="form-control" placeholder="Date" required>
+                            <label for="floatingInput">Date</label>
+                        </div>
 
-                                <div class="form-floating">
-                                    <input type="text" name="cover_img" id="cover_img" class="form-control" placeholder="Cover Image" required="">
-                                            
-                                    <label for="floatingInput">Cover Image Name</label>
-                                </div>
+                        <div class="form-floating">
+                            <input type="text" name="category" id="category" class="form-control" placeholder="Category" required>
+                            <label for="floatingInput">Category</label>
+                        </div>
 
-                                <div class="form-floating">
-                                    <textarea class="form-control" id="content" name="content" placeholder="Content"></textarea>
-                                            
-                                    <label for="floatingTextarea"> Content</label>
-                                </div>
+                        <div class="form-floating">
+                            <input type="text" name="cover_img" id="cover_img" class="form-control" placeholder="Cover Image" required>
+                            <label for="floatingInput">Cover Image Name</label>
+                        </div>
 
-                                <button type="button" class="form-control" onclick="uploadNews()">Upload News</button>
+                        <div class="form-floating">
+                            <textarea class="form-control" id="content" name="content" placeholder="Content"></textarea>
+                            <label for="floatingTextarea">Content</label>
+                        </div>
 
-                                <br/>
-                                <p id="status" class="text-white"></p>
-                            </div>
-                        </form>
+                        <button type="button" class="form-control" id="save-button" onclick="saveNews()">Upload News</button>
+
+                        <button type="button" class="form-control btn-danger mt-2" id="delete-button" style="display:none;" onclick="deleteNews()">Delete News</button>
+
+                        <br/>
+                        <p id="status" class="text-white"></p>
+                    </form>
                 </div>
             </div>
+
             
         </main>
 

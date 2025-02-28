@@ -29,8 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (currentPage === 'edit_news.html') {
         initializeNewsPage();
-    } else if (currentPage === 'edit_news_detail.html') {
-        initializeNewsDetailPage();
     }
 });
 
@@ -69,7 +67,7 @@ async function initializeNewsPage() {
                                         <li><span>Date:</span>
                                             <h6>${news.date}</h6></li>
                                     </ul>
-                                    <a href="edit_news_detail.html?id=${news.id}" onclick="return checkAccessEditNewsDetail();">
+                                    <a href="add_news.html?id=${news.id}" onclick="return checkAccessEditNewsDetail(event);">
                                         <i class="fa fa-angle-right"></i>
                                     </a>
                                 </div>
@@ -98,41 +96,108 @@ function checkAccessEditNewsDetail(event) {
     });
 }
 
-async function initializeNewsDetailPage() {
-    firebase.auth().onAuthStateChanged((user) => {
-        if (!user) {
-            alert("You must be logged in to view this page.");
-            window.location.href = "edit_news.html"; // Redirect to the news list page instead
-            return;
-        }
+document.addEventListener("DOMContentLoaded", function () {
+    const params = new URLSearchParams(window.location.search);
+    const newsId = params.get("id");
 
-        const newsContainer = document.querySelector('.news-detail');
-        newsContainer.innerHTML = '';
+    if (newsId) {
+        document.getElementById("form-title").textContent = "Edit News";
+        document.getElementById("save-button").textContent = "Save Changes";
+        document.getElementById("delete-button").style.display = "block";
+        document.getElementById("news_id").value = newsId;
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const newsId = urlParams.get('id');
-
-        db.ref("news/" + newsId).once("value", snapshot => {
-            const news = snapshot.val();
-
-            if (news) {
-                const newsItem = document.createElement('div');
-                newsItem.className = 'news-details-content';
-                newsItem.innerHTML = `
-                    <h1>${news.title}</h1>
-                    <p class="news-meta">Published on <span>${news.date}</span></p>
-                    <div>
-                        <p>${news.content}</p>
-                    </div>
-                `;
-                newsContainer.appendChild(newsItem);
-            } else {
-                alert("News not found.");
-                window.location.href = "edit_news.html"; // Redirect if the news item is missing
+        // Check authentication
+        firebase.auth().onAuthStateChanged((user) => {
+            if (!user) {
+                alert("You must be logged in to access this page.");
+                window.location.href = "edit_news.html"; // Redirect to the login page or news list
+                return;
             }
+            // Load news data after confirming user is authenticated
+            loadNewsData(newsId);
         });
+    }
+});
+
+function loadNewsData(newsId) {
+    const db = firebase.database();
+    db.ref("news/" + newsId).once("value", (snapshot) => {
+        const news = snapshot.val();
+
+        if (news) {
+            document.getElementById("title").value = news.title;
+            document.getElementById("date").value = news.date;
+            document.getElementById("category").value = news.category;
+            document.getElementById("cover_img").value = news.image;
+            document.getElementById("content").value = news.content;
+        } else {
+            alert("News not found!");
+            window.location.href = "edit_news.html";
+        }
+    }).catch((error) => {
+        console.error("Error loading news:", error);
     });
 }
+
+
+function saveNews() {
+    const newsId = document.getElementById("news_id").value;
+    const title = document.getElementById("title").value;
+    const date = document.getElementById("date").value;
+    const category = document.getElementById("category").value;
+    const image = document.getElementById("cover_img").value;
+    const content = document.getElementById("content").value;
+
+    const newsData = { title, date, category, image, content };
+
+    const db = firebase.database();
+
+    if (newsId) {
+        // Update existing news
+        db.ref("news/" + newsId).update(newsData)
+        .then(() => {
+            document.getElementById("status").textContent = "News updated successfully!";
+        })
+        .catch((error) => {
+            console.error("Error updating news:", error);
+        });
+    } else {
+        // Add new news
+        const newNewsRef = db.ref("news").push();
+        newNewsRef.set(newsData)
+        .then(() => {
+            document.getElementById("status").textContent = "News uploaded successfully!";
+
+            document.getElementById("news_id").value = "";
+            document.getElementById("title").value = "";
+            document.getElementById("date").value = "";
+            document.getElementById("category").value = "";
+            document.getElementById("cover_img").value = "";
+            document.getElementById("content").value = "";
+        })
+        .catch((error) => {
+            console.error("Error adding news:", error);
+        });
+    }
+}
+
+
+function deleteNews() {
+    const newsId = document.getElementById("news_id").value;
+
+    if (confirm("Are you sure you want to delete this news? This action cannot be undone!")) {
+        const db = firebase.database();
+        db.ref("news/" + newsId).remove()
+        .then(() => {
+            alert("News deleted successfully!");
+            window.location.href = "edit_news.html"; // Redirect after deletion
+        })
+        .catch((error) => {
+            console.error("Error deleting news:", error);
+        });
+    }
+}
+
 
 function checkLoginStatus() {
     const isLoggedIn = localStorage.getItem("isLoggedIn");
